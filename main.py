@@ -5,9 +5,9 @@ import random
 #import pyeeg 
 
 #eeg_device=
-#pyeeg.connect(eeg_device)
+#pyeeg.connect(eeg_device)                                                                      #connection to eeg device
 
-#model=joblib.load('model.pkl')
+#model=joblib.load('model.pkl')                                                                 #loading trained model
 
 pygame.init()
 
@@ -190,7 +190,7 @@ def main():
         points += 1
         if points % 100 == 0:
             game_speed += 1
-            #eeg_read()
+            #eeg_read()                                                                     # calling function
 
         text = font.render("Points: " + str(points), True, (0, 0, 0))
         textRect = text.get_rect()
@@ -280,7 +280,7 @@ def menu(death_count):
                 main()
 
 """
-def eeg_read():
+def eeg_read():                                                                              # EMOTION RECOGNITION
     d=pyeeg.read_data()
     emotion=model.predict(d)
     if emotion==0 :
