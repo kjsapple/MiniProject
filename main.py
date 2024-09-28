@@ -1,8 +1,15 @@
 import pygame
 import os
 import random
-pygame.init()
+#import joblib
+#import pyeeg 
 
+#eeg_device=
+#pyeeg.connect(eeg_device)
+
+#model=joblib.load('model.pkl')
+
+pygame.init()
 
 SCREEN_HEIGHT = 600
 SCREEN_WIDTH = 1100
@@ -183,6 +190,7 @@ def main():
         points += 1
         if points % 100 == 0:
             game_speed += 1
+            #eeg_read()
 
         text = font.render("Points: " + str(points), True, (0, 0, 0))
         textRect = text.get_rect()
@@ -200,7 +208,6 @@ def main():
         x_pos_bg -= game_speed
 
     while run:
-        clock.tick(200)
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 run = False
@@ -272,5 +279,14 @@ def menu(death_count):
             if event.type == pygame.KEYDOWN:
                 main()
 
+"""
+def eeg_read():
+    d=pyeeg.read_data()
+    emotion=model.predict(d)
+    if emotion==0 :
+        game_speed -= 2
+    elif emotion==2 :
+        game_speed += 1
+"""
 
 menu(death_count=0)
